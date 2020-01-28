@@ -4,6 +4,6 @@ FactoryBot.define do
     description       {Faker::Lorem.sentence}
     unit_price             {rand(100..10000)}
 
-    association      :merchant, factory: :random_merchant
+    association      :merchant, factory: :merchant1
   end
 end
