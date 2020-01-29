@@ -34,8 +34,7 @@ task :import => [:environment] do
   end
 
   CSV.foreach(invoice_items, headers: true) do |row|
-  #item = Item.find_by(id: row["item_id"])
-  InvoiceItem.create(row.to_hash)#.except("item_id", "invoice_id"))
+    InvoiceItem.create(row.to_hash)
   end
 
   CSV.foreach(transactions, headers: true) do |row|
