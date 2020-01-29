@@ -1,16 +1,16 @@
-require 'rails_helper'
-
-describe "can find Merchant API" do
-
-  describe "GET #index" do
-    it "sends a list of merchants" do
-      create_list(:merchant, 4)
-
-      get '/api/v1/merchants'
-      expect(response).to have_http_status(:success)
-      merchant = JSON.parse(response.body)["data"]
-
-      expect(merchant.count).to eq(4)
-    end
-  end
-end 
+# require 'rails_helper'
+#
+# describe "can get Merchant API" do
+#
+#   describe "business endpoints" do
+#     it "GET /api/v1/merchants/most_revenue?quantity=x" do
+#       create_list(:merchant, 5)
+#
+#       create_list(:invoice_items, 100)
+#
+#       get '/api/v1/merchants/most_revenue?quantity=1'
+#       expect(response).to have_http_status(:success)
+#
+#     end
+#   end
+# end
