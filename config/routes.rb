@@ -4,6 +4,38 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       namespace :merchants do
+        get '/:merchant_id/items', to: 'items#index'
+        get '/:merchant_id/invoices', to: 'invoices#index'
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :customers do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :invoices do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :invoice_items do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :items do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :transactions do
         get '/find_all', to: 'find#index'
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
@@ -14,12 +46,7 @@ Rails.application.routes.draw do
       resources :invoices, only: [:index, :show]
       resources :transactions, only: [:index, :show]
       resources :invoice_items, only: [:index, :show]
-
-      get '/merchants/most_revenue', to: 'merchants_revenue#index'
-
-      resources :merchants, only: [:index, :show] do
-        resources :items, only: [:index, :show]
-      end
+      resources :merchants, only: [:index, :show]
     end
   end
 end

@@ -26,7 +26,12 @@ task :import => [:environment] do
   end
 
   CSV.foreach(items, headers: true) do |row|
-    Item.create(row.to_hash)
+    Item.create(
+            id: row[0].to_i,
+            name: row['name'],
+            description: row['description'],
+            merchant_id: row['merchant_id'],
+            unit_price: (row['unit_price'].to_f/ 100))
   end
 
   CSV.foreach(invoices, headers: true) do |row|
@@ -34,7 +39,12 @@ task :import => [:environment] do
   end
 
   CSV.foreach(invoice_items, headers: true) do |row|
-    InvoiceItem.create(row.to_hash)
+     InvoiceItem.create(
+              id: row[0].to_i,
+              quantity: row['quantity'],
+              item_id: row['item_id'],
+              invoice_id: row['invoice_id'],
+              unit_price: (row['unit_price'].to_f/ 100))
   end
 
   CSV.foreach(transactions, headers: true) do |row|
