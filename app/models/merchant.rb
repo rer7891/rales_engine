@@ -12,8 +12,6 @@ class Merchant < ApplicationRecord
   end
 
   def self.most_revenue(quantity)
- #    require "pry"; binding.pry
- #    joins(invoices: [:invoice_items, :transactions]).select('merchants.*, sum(invoice_items.quantity * invoi
- # ce_items.unit_price) as revenue').group(:id).merge(Transaction.successful).order("revenue desc").limit(2)
+    joins(invoices: [:invoice_items, :transactions]).select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue').group(:id).where(transactions: {result: "success"}).order("revenue desc").limit(quantity)
   end
 end
