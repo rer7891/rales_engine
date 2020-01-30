@@ -31,6 +31,8 @@ task :import => [:environment] do
             name: row['name'],
             description: row['description'],
             merchant_id: row['merchant_id'],
+            created_at: row['created_at'],
+            updated_at: row['updated_at'],
             unit_price: (row['unit_price'].to_f/ 100))
   end
 
@@ -44,6 +46,8 @@ task :import => [:environment] do
               quantity: row['quantity'],
               item_id: row['item_id'],
               invoice_id: row['invoice_id'],
+              created_at: row['created_at'],
+              updated_at: row['updated_at'], 
               unit_price: (row['unit_price'].to_f/ 100))
   end
 

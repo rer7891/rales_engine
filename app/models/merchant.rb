@@ -10,4 +10,8 @@ class Merchant < ApplicationRecord
     random_offset = rand(count)
     random_object = self.offset(random_offset).first
   end
+
+  def self.most_revenue(quantity)
+    joins(invoices: [:invoice_items, :transactions]).select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as revenue').group(:id).where(transactions: {result: "success"}).order("revenue desc").limit(quantity)
+  end
 end
