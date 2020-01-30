@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get '/find_all', to: 'find#index'
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
+        get '/most_revenue', to: 'revenue#index'
       end
 
       namespace :customers do
