@@ -36,4 +36,19 @@ describe "can find Merchant API" do
         expect(merchant["name"]).to eq(merchant_3.name)
     end
   end
+
+  describe 'API can return a random Merchant' do
+    it "finds a random merchant" do
+       merchant_array = create_list(:merchant, 20)
+
+      get "/api/v1/merchants/random"
+      expect(response).to have_http_status(:success)
+      merchant = JSON.parse(response.body)['data']['attributes']
+      first_merchant = merchant_array.find {|merchant| merchant.name == merchant["name"]}
+
+      get "/api/v1/merchants/random"
+      merchant_2 = JSON.parse(response.body)['data']['attributes']
+      expect(merchant_2["name"]).not_to eq(first_merchant.name)
+    end
+  end
 end
