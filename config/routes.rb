@@ -11,16 +11,42 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
       end
 
+      namespace :customers do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :invoices do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :invoice_items do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :items do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
+      namespace :transactions do
+        get '/find_all', to: 'find#index'
+        get '/find', to: 'find#show'
+        get '/random', to: 'random#show'
+      end
+
       resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]
       resources :invoices, only: [:index, :show]
       resources :transactions, only: [:index, :show]
       resources :invoice_items, only: [:index, :show]
-
-      get '/merchants/most_revenue', to: 'merchants_revenue#index'
-
-      resources :merchants, only: [:index, :show] do
-      end
+      resources :merchants, only: [:index, :show]
     end
   end
 end
