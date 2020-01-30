@@ -4,8 +4,5 @@ class InvoiceItem < ApplicationRecord
   belongs_to :item
   belongs_to :invoice
 
-  def unit_price
-  #require "pry"; binding.pry
-   unit_price.to_s
-  end
+  default_scope { order("id asc") }
 end

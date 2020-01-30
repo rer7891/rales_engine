@@ -9,4 +9,5 @@ class Invoice < ApplicationRecord
   has_many :items, through: :invoice_items
 
   enum status: %w(shipped)
+  default_scope { order("id asc") }
 end
