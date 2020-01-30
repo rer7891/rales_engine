@@ -39,7 +39,7 @@ describe "can find Merchant API" do
 
   describe 'API can return a random Merchant' do
     it "finds a random merchant" do
-       merchant_array = create_list(:merchant, 20)
+       merchant_array = create_list(:merchant, 50)
 
       get "/api/v1/merchants/random"
       expect(response).to have_http_status(:success)
