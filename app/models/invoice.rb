@@ -10,4 +10,11 @@ class Invoice < ApplicationRecord
 
   enum status: %w(shipped)
   default_scope { order("id asc") }
+  scope :day, ->(date) { where(date_range_formatter(date)) }
+
+  def self.date_range_formatter(date)
+    start = Time.zone.parse(date)
+    end_date = start + 1.day
+    { created_at: start..end_date }
+  end
 end

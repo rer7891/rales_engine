@@ -26,5 +26,16 @@ describe "can get business endpoints" do
       get '/api/v1/merchants/most_revenue?quantity=2'
 
     end
+
+    it "GET /api/v1/merchants/favorite_customer" do
+      merchant = create(:merchant)
+      merchant_2 = create(:merchant)
+      merchant_3 = create(:merchant)
+      customer = create(:customer)
+      customer_2 = create(:customer)
+      customer_3 = create(:customer)
+      create_list(:invoice, 5, merchant: merchant_3, customer: customer_3)
+      create_list(:invoice, 10, merchant: merchant, customer: customer)
+    end
   end
 end
