@@ -9,9 +9,11 @@ Rails.application.routes.draw do
         get '/find_all', to: 'find#index'
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
+        get ':id/favorite_customer', to: 'customers#show'
         get '/most_revenue', to: 'revenue#index'
-      end
+        get '/revenue', to: 'revenue#show'
 
+      end
       namespace :customers do
         get '/:customer_id/invoices', to: 'invoices#index'
         get '/:customer_id/transactions', to: 'transactions#index'
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
         get '/:id/merchant', to: 'merchants#show'
         get '/:id/invoice_items', to: 'invoice_items#index'
+        get '/most_items', to: 'revenue#index'
       end
 
       namespace :transactions do
