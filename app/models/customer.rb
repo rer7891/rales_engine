@@ -9,4 +9,10 @@ class Customer < ApplicationRecord
     merchant = merchant_id.to_i
     joins(invoices: :transactions).select('customers.*, count(transactions.id) as total_transactions').where('invoices.merchant_id = ?', merchant).merge(Transaction.successful).group(:id).reorder("total_transactions desc").limit(1).first
   end
+
+  def self.find_pending_invoices(merchant_id)
+    merchant = merchant_id.to_i
+    joins(invoices: :transactions).select('customers.*').where('invoices.merchant_id = ? AND ', merchant).merge(Transaction.successful).group(:id).reorder("total_transactions desc").limit(1).first
+  end
+
 end
