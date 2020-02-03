@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         get '/most_revenue', to: 'ranks#index'
         get '/revenue', to: 'revenues#index'
         get '/:id/revenue', to: "revenues#show"
-        #get '/most_items', to: 'most_items#index'
+        get '/most_items', to: 'most_items#index'
 
 
       end
@@ -52,7 +52,8 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
         get '/:id/merchant', to: 'merchants#show'
         get '/:id/invoice_items', to: 'invoice_items#index'
-        get '/most_items', to: 'revenue#index'
+        get '/most_revenue', to: 'revenue#index'
+        get '/:id/best_day', to: 'revenue#show'
       end
 
       namespace :transactions do

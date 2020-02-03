@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
 
   has_many :invoices, dependent: :destroy
   has_many :transactions, through: :invoices
+  has_many :merchants, through: :invoices
 
   def self.find_fav_customer(merchant_id)
     merchant = merchant_id.to_i
